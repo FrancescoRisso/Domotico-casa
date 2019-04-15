@@ -1,50 +1,12 @@
 # coding: latin-1
 
-import mysql.connector
 import requests
 from requests.auth import HTTPBasicAuth
 from mysql.connector import Error
-import datetime
 import xml.etree.ElementTree as ET
 
-# Establish a connection to the database
-def connect(date):
-    try:
-        conn = mysql.connector.connect(host=host_url, database=db, user=usr, password=pwd)
-        if conn.is_connected():
-            print(date + ' Connected to MySQL database')
-            return conn
-
-    except Error as e:
-        print("Error while connecting to the database")
-        print(e)
-        conn.close()
-
-
-# Get the actual date and time in the format "YYYY-MM-DD HH:MM:SS"
-def get_date():
-    now = datetime.datetime.today()
-
-    second = now.second
-    minute = now.minute
-    hour = now.hour
-    day = now.day
-    month = now.month
-    year = now.year
-
-    date = str(year) + "-"
-    if month < 10: date = date + "0" + str(month) + "-"
-    else: date = date + str(month) + "-"
-    if day < 10: date = date + "0" + str(day) + "-"
-    else: date = date + str(day) + " "
-    if hour < 10: date = date + "0" + str(hour) + ":"
-    else: date = date + str(hour) + ":"
-    if minute < 10: date = date + "0" + str(minute) + ":"
-    else: date = date + str(minute) + ":"
-    if second < 10: date = date + "0" + str(second)
-    else: date = date + str(second)
-
-    return date
+from connect import connect
+from date import get_date
 
 
 # Insert a certain value in the database
