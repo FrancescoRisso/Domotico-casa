@@ -1,0 +1,29 @@
+{
+	"Database": {
+		"ip": "192.168.0.2",
+		"db": "Temperatures",
+		"user": "prova",
+		"password": "prova"
+	},
+
+
+	
+	"Cmi": {
+		"ip": "http://192.168.0.195",
+		"link": "/INCLUDE/devpagex.cgi?pagex2=",
+
+		"Inputs": {
+			"nodo1": "01025800",
+			"nodo2": "02025800",
+			"nodo33": "21025800",
+			"nodo34": "22025800"
+		},
+
+		"Outputs": {
+			"nodo1": "01045800",
+			"nodo2": "02045800",
+			"nodo33": "21045800",
+			"nodo34": "22045800"
+		}
+	}		
+}
