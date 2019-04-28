@@ -10,8 +10,8 @@ import xml.etree.ElementTree as ET
 from flask import Flask
 app = Flask(__name__)
 
-header = '<html>\n\t<header>\n\t\t<title>\n\t\t\tHome control panel\n\t\t</title>\n\t\t<script type="text/JavaScript">\n\t\t\t<!--\n\t\t\t\tfunction reload(){\n\t\t\t\t\tsetTimeout("location.reload(true);", 5*1000);\n\t\t\t\t}\n\t\t\t//-->\n\t\t</script>\n\t</header>\n\n\t<body>'
-footer = '\n\n\t\t<p>\n\t\t\tLast modified: April 9, 2019\n\t\t</p>\n\t</body>\n</html>'
+header = '<html>\n\t<header>\n\t\t<title>\n\t\t\tHome control panel\n\t\t</title>\n\t</header>\n\n\t<body>\n\t\t'
+footer = '\n\n\t\t<small>\n\t\t\tLast modified: April 28, 2019\n\t\t</small>\n\t</body>\n</html>'
 
 
 # Get the instantaneous date and time in the format "YYYY-MM-DD HH:MM:SS"
@@ -56,7 +56,7 @@ def connect():
 
 # Read a certain temperature from the database
 def read(index):
-    reader.execute("SELECT Temperature FROM ACTUAL_DATA WHERE InputID = " + str(index))
+    reader.execute("SELECT Temperature FROM CURRENT_DATA WHERE InputID = " + str(index))
     var = str(reader.fetchone()).replace("(Decimal('", "").replace("'),)","")
     return var
 
@@ -69,14 +69,14 @@ def page_add(page, stanza, temp):
 @app.route('/')
 def hello():
     page= header
-    page = page + "\n\t\t<h1>\n\t\t\tTemperature " + get_date() + "\n\t\t</h1>"
-    page = page + "\n\n\t\t<table>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>Stanza</th>\n\t\t\t\t\t<th>Temperatura</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>"
+    page = page + "\n\t\t<h1>\n\t\t\tTemperature " + get_date() + "\n\t\t</h1>\n\t\t<hr>"
+    page = page + "\n\n\t\t<table>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th align = \"left\">Stanza</th>\n\t\t\t\t\t<th align = \"left\">Temperatura</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>"
     page = page_add(page, "Camera Francesco", read(1))
     page = page_add(page, "Camera Valentina", read(2))
     page = page_add(page, "Camera Genitori", read(5))
     page = page_add(page, "Studio", read(4))
     page = page_add(page, "Salone", read(3))
-    page = page + "\n\t\t\t</tbody>"
+    page = page + "\n\t\t\t</tbody>\n\t\t</table>\n\t\t<hr>"
     page = page + footer
     return page
 
