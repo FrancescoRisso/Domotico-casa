@@ -6,11 +6,10 @@ from functions.temperature.get import temp_getter
 from functions.outputs.get import out_getter
 from functions.config import config
 
-config = config()
-
 date = get_date()
 print(date + " Starting data collection")
 
+config = config()
 connection = connect(date)
 writer = connection.cursor()
 
