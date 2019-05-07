@@ -1,9 +1,18 @@
 {
 	"Database": {
-		"ip": "192.168.0.2",
-		"db": "Temperatures",
-		"user": "prova",
-		"password": "prova"
+		"Temperatures": {
+			"ip": "192.168.0.2",
+			"db": "Temperatures",
+			"user": "prova",
+			"password": "prova"
+		},
+
+		"Electricity": {
+			"ip": "192.168.0.2",
+			"db": "Electricity",
+			"user": "prova",
+			"password": "prova"
+		}
 	},
 
 
@@ -25,5 +34,14 @@
 			"nodo33": "21045800",
 			"nodo34": "22045800"
 		}
-	}		
+	},
+
+
+	"Datalogger": {
+		"ip": "http://bticino-energy",
+		"password": "datalogger",
+		"configs": "/sysinfo.xml24",
+		"key": "/pubkey.xml",
+		"key_send": "/index.html"
+	}
 }

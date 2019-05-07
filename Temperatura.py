@@ -10,7 +10,7 @@ date = get_date()
 print(date + " Starting data collection")
 
 config = config()
-connection = connect(date)
+connection = connect(date, "Temperatures")
 writer = connection.cursor()
 
 temp_getter(config['Cmi']['ip']+config['Cmi']['link']+config['Cmi']['Inputs']['nodo1'], 1, date, writer)

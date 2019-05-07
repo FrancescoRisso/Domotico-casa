@@ -6,9 +6,9 @@ config = config()
 
 
 # Establishes and returns a connection to the database
-def connect(date):
+def connect(date, database):
     try:
-        conn = mysql.connector.connect(host=config['Database']['ip'], database=config['Database']['db'], user=config['Database']['user'], password=config['Database']['password'])
+        conn = mysql.connector.connect(host=config['Database'][database]['ip'], database=config['Database'][database]['db'], user=config['Database'][database]['user'], password=config['Database'][database]['password'])
         if conn.is_connected():
             print(date + ' Connected to MySQL database')
             return conn
