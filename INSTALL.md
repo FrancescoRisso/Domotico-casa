@@ -18,6 +18,7 @@
     PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 
     */5 * * * * python /home/user/Desktop/Domotico-casa/Temperatura.py 1>> /var/log/casa/log 2>> /var/log/casa/error
+	*0 * * * * python /home/db/Domotico-casa/Energia_elettrica.py 1>> /var/log/casa/log_electricity 2>> /var/log/casa/error_electricity
 
 
     // Save upon exit, using the suggested name
