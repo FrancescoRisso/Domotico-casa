@@ -10,7 +10,7 @@ def temp_getter (link, cmi, date, writer):
     reader = requests.get(link, auth=HTTPBasicAuth('admin', 'admin')).text
     data = '<data>' + reader + '</data>'
 
-    root = ET.fromstring(data.encode('ascii', 'ignore'))
+    root = ET.fromstring(data.encode('ascii', 'ignore')) 
 
     try:
         if cmi == 1:
