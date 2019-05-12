@@ -12,7 +12,10 @@ from functions.electricity.datalogger_connecter import dl_connect
 date = get_date()
 print(date + " Starting data collection")
 
-try: dl_connect()
+try:
+	dl_connect()
+	dl_connect()
+	dl_connect()
 except Exception as e: print("Error while connecting to the datalogger: '" + str(e) + "'")
 
 config = config()
