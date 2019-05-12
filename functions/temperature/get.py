@@ -35,6 +35,7 @@ def temp_getter (link, cmi, date, writer):
             temp_processer(root, 1, 3, writer, date)
             temp_processer(root, 2, 5, writer, date)
             temp_processer(root, 3, 4, writer, date)
+            temp_processer(root, 4, 6, writer, date)
 
     except Exception as e:
         if e == "Writing to the db pt.2":
