@@ -8,12 +8,13 @@ from functions.config import config
 def dl_connect():
     configuration = config()
     link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key']
-    link2 = configuration['Datalogger']['ip'] + configuration['Datalogger']['key_send']
+    logout = configuration['Datalogger']['ip'] + configuration['Datalogger']['logout']
 
-    requests.get(link2)
-    requests.get(link)
+    conn_logout = requests.get(logout)
+    conn_logout.close()
+    conn = requests.get(link)
 
-    key = str(requests.get(link).text)
+    key = str(conn.text)
 
     key = key[5:29]
 
@@ -25,7 +26,8 @@ def dl_connect():
     W2 = o[24:48]
 
     link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key_send'] + "?W1=" + W1 + "&W2=" + W2
-    requests.get(link)
+    conn = requests.get(link)
+    return conn
 
 
 def ConvertiChiave(e):
