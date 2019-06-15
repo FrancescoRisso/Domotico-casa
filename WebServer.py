@@ -5,8 +5,6 @@ from flask import Flask
 
 app = Flask(__name__)
 
-from tkinter import *
-
 from functions.date import get_date
 from functions.connect import connect
 
