@@ -7,6 +7,7 @@
     pip install requests
     # Python web server
     pip install flask
+    pip install waitress
 
 
 # To enable the periodic execution of the script
