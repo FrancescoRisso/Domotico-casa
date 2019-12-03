@@ -53,7 +53,7 @@ if __name__ == '__main__':
     connection = connect(date, "Temperatures")
     reader = connection.cursor()
 
-serve(app)
+serve(app, listen='*:80')
     #app.run(host= '0.0.0.0', port=80)
 #   Default call to this app
 #   app.run()
