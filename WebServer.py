@@ -2,6 +2,7 @@
 
 # Flask example: https://realpython.com/flask-by-example-part-1-project-setup/
 from flask import Flask
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -52,6 +53,7 @@ if __name__ == '__main__':
     connection = connect(date, "Temperatures")
     reader = connection.cursor()
 
-    app.run(host= '0.0.0.0', port=80)
+serve(app)
+    #app.run(host= '0.0.0.0', port=80)
 #   Default call to this app
 #   app.run()
