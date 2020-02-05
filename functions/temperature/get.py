@@ -26,6 +26,7 @@ def temp_getter (link, cmi, date, writer):
             temp_processer(root, 2, 8, writer, date)
             temp_processer(root, 3, 9, writer, date)
             temp_processer(root, 4, 10, writer, date)
+            temp_processer(root, 5, 18, writer, date)
 
         elif cmi == 33:
             temp_processer(root, 1, 1, writer, date)
