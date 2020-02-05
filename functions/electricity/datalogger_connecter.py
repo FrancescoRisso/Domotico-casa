@@ -8,10 +8,6 @@ from functions.config import config
 def dl_connect():
     configuration = config()
     link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key']
-    logout = configuration['Datalogger']['ip'] + configuration['Datalogger']['logout']
-
-    conn_logout = requests.get(logout)
-    conn_logout.close()
     conn = requests.get(link)
 
     key = str(conn.text)
