@@ -21,7 +21,7 @@ except Exception:
     quit()
 
 config = config()
-connection = connect(date, "Electricity")
+connection = connect(date, "Temperatures")
 writer = connection.cursor()
 
 site_config = requests.get(config['Datalogger']['ip'] + config['Datalogger']['configs'], auth=HTTPBasicAuth('', config['Datalogger']['password'])).text
@@ -69,6 +69,7 @@ last_execution.write(root[10].text + " " + root[11].text)
 last_execution.close()
 
 connection.close()
+conn.close()
 conn.close()
 
 logout = config['Datalogger']['ip'] + config['Datalogger']['logout']
