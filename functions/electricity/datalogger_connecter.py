@@ -10,6 +10,8 @@ def dl_connect():
     link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key']
     conn = requests.get(link)
 
+    print(link)
+
     key = str(conn.text)
 
     key = key[5:29]
@@ -23,6 +25,11 @@ def dl_connect():
 
     link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key_send'] + "?W1=" + W1 + "&W2=" + W2
     conn = requests.get(link)
+
+    print(link)
+    print(conn)
+    print(conn.text)
+
     return conn
 
 
