@@ -44,7 +44,7 @@ def dl_connect(date):
 
         print(date + " Connecting to " + link)
         print(date + " Answer: " + str(conn.status_code) + " " + conn.reason)
-        print(date + " Returned page: " + conn.text)
+        # print(date + " Returned page: " + conn.text)
 
         return conn
 
