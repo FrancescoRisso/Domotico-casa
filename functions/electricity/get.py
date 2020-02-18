@@ -31,8 +31,6 @@ def get(link, writer, day, month, year, hour, config, source):
     # Consequently, the element we have to read is the 5th (i.e., ORDDAT == 0) for 00:00am,
     # the 14th (i.e., ORDDAT == 9) for 1:00am, the 23rd (i.e., ORDDAT == 18) for 2:00am, and so on.
 
-    i = 5
-
     try:
         date = "20" + str(year) + "-" + str(month) + "-" + str(day) + "-" + str(hour) + ":00:00"
         # Debug
@@ -43,8 +41,8 @@ def get(link, writer, day, month, year, hour, config, source):
         # Debug
         # print (link + " ORDDAT " + str(orddat-5) + " value " + root[orddat][3].text)
 
-        insert(root[i][3].text, source, writer, date)
+        insert(root[orddat][3].text, source, writer, date)
 
     except Exception as e:
-        print("Error while getting the data: '" + str(e) + "'")
+        print("Error while getting the data (" + link + "): '" + str(e) + "'")
 

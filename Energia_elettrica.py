@@ -13,14 +13,13 @@ from functions.electricity.datalogger_connecter import dl_connect
 date = get_date()
 print(date + " Starting data collection")
 
-try:
-    conn = dl_connect()
-except Exception as e:
-    #print(conn)
-    print("Unable to connect to the datalogger: '" + str(e) + "'")
-    quit()
+#try:
 
-#print(conn.text)
+conn = dl_connect(date)
+#except Exception as e:
+#    print("Unable to connect to the datalogger: '" + str(e) + "'")
+#    quit()
+
 
 config = config()
 connection = connect(date, "Temperatures")
