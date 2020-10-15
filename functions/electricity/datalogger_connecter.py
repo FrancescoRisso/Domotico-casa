@@ -1,56 +1,30 @@
 import xml.etree.ElementTree as ET
 import requests
 import random
-import time
 
 from functions.config import config
 
 
-def dl_connect(date):
+def dl_connect():
     configuration = config()
+    link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key']
+    conn = requests.get(link)
 
-    try:
-        # For some strange reasons, the datalogger sometimes does not return the proper page
-        # unless you connect to the webroot object. Upon this, pages are correctly returned.
-        # So, we connect to the webroot obhect, wait for a while, close the connection, 
-        # then ask for exactly the object we are interested in.
-        link = configuration['Datalogger']['ip']
+    key = str(conn.text)
 
-        print(date + " Connecting to " + link)
-        conn = requests.get(link)
-        conn.close()
+    key = key[5:29]
 
-        # Sleep for 5 seconds to see if the datalogger wakes up
-        time.sleep(5);
+    i = ConvertiChiave(key)
+    d = configuration['Datalogger']['password']
+    l = 1
+    o = Calcola(d,i)
+    W1 = o[0:24]
+    W2 = o[24:48]
 
-        # Now, ask for the object we are really interested in.
-        link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key']
+    link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key_send'] + "?W1=" + W1 + "&W2=" + W2
+    conn = requests.get(link)
 
-        print(date + " Connecting to " + link)
-        conn = requests.get(link)
-
-        key = str(conn.text)
-        key = key[5:29]
-
-        i = ConvertiChiave(key)
-        d = configuration['Datalogger']['password']
-        l = 1
-        o = Calcola(d,i)
-        W1 = o[0:24]
-        W2 = o[24:48]
-
-        link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key_send'] + "?W1=" + W1 + "&W2=" + W2
-        conn = requests.get(link)
-
-        print(date + " Connecting to " + link)
-        print(date + " Answer: " + str(conn.status_code) + " " + conn.reason)
-        # print(date + " Returned page: " + conn.text)
-
-        return conn
-
-    except Exception as e:
-        print(date + " Unable to connect to the datalogger (" + link + "): '" + str(e) + "'")
-        quit()
+    return conn
 
 
 def ConvertiChiave(e):

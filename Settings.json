@@ -1,18 +1,9 @@
 {
 	"Database": {
-		"Temperatures": {
-			"ip": "192.168.0.2",
-			"db": "Temperatures",
-			"user": "prova",
-			"password": "prova"
-		},
-
-		"Electricity": {
-			"ip": "192.168.0.2",
-			"db": "Electricity",
-			"user": "prova",
-			"password": "prova"
-		}
+		"ip": "192.168.0.2",
+		"db": "House_info",
+		"user": "prova",
+		"password": "prova"
 	},
 
 

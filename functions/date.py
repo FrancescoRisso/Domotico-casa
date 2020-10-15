@@ -5,23 +5,13 @@ import datetime
 def get_date():
     now = datetime.datetime.today()
 
-    second = now.second
-    minute = now.minute
-    hour = now.hour
-    day = now.day
-    month = now.month
-    year = now.year
+    second = f"{now.second:02}"
+    minute = f"{now.minute:02}"
+    hour = f"{now.hour:02}"
+    day = f"{now.day:02}"
+    month = f"{now.month:02}"
+    year = f"{now.year:02}"
 
-    date = str(year) + "-"
-    if month < 10: date = date + "0" + str(month) + "-"
-    else: date = date + str(month) + "-"
-    if day < 10: date = date + "0" + str(day) + "-"
-    else: date = date + str(day) + " "
-    if hour < 10: date = date + "0" + str(hour) + ":"
-    else: date = date + str(hour) + ":"
-    if minute < 10: date = date + "0" + str(minute) + ":"
-    else: date = date + str(minute) + ":"
-    if second < 10: date = date + "0" + str(second)
-    else: date = date + str(second)
+    date = f"{year}-{month}-{day} {hour}:{minute}:{second}"
 
     return date

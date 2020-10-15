@@ -9,4 +9,4 @@ def config():
         with open(file_path, 'r') as settings_file:
             return json.load(settings_file)
     except Exception as e:
-        print("Error while opening config file: '" + str(e) + "'")
+        print(f"Error while opening config file: '{e}'")

@@ -2,10 +2,8 @@ import requests
 from requests.auth import HTTPBasicAuth
 import xml.etree.ElementTree as ET
 
-from functions.electricity.insert import insert
 
-
-def get(link, writer, day, month, year, hour, config, source):
+def get(link, datetime, config):
     data = requests.get(link, auth=HTTPBasicAuth('', config['Datalogger']['password'])).text
     root = ET.fromstring(data.encode('ascii', 'ignore'))
 
@@ -32,17 +30,17 @@ def get(link, writer, day, month, year, hour, config, source):
     # the 14th (i.e., ORDDAT == 9) for 1:00am, the 23rd (i.e., ORDDAT == 18) for 2:00am, and so on.
 
     try:
-        date = "20" + str(year) + "-" + str(month) + "-" + str(day) + "-" + str(hour) + ":00:00"
+        date = f"20{datetime.year}-{datetime.month}-{datetime.day}-{datetime.hour}:00:00"
         # Debug
-        # print(link + "     " + str(hour) + " date " + date)
+        #print(f"{source} {link} hour: {datetime.hour:02} date {date}")
 
-        orddat = 5 + 9 * hour;
+        orddat = 5 + 9 * datetime.hour;
 
         # Debug
-        # print (link + " ORDDAT " + str(orddat-5) + " value " + root[orddat][3].text)
+        #print (f"{link} ORDDAT {orddat-5} value {root[orddat][3].text}")
 
-        insert(root[orddat][3].text, source, writer, date)
+        return root[orddat][3].text
 
     except Exception as e:
-        print("Error while getting the data (" + link + "): '" + str(e) + "'")
+        print(f"Error while getting the data: '{e}'")
 
