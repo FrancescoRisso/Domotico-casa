@@ -32,7 +32,7 @@ def hello():
     global reader
 
     date = get_date()
-    connection = connect(date, "Temperatures")
+    connection = connect(date)
     reader = connection.cursor()
 
     page = header
@@ -56,7 +56,7 @@ if __name__ == '__main__':
 # Note: since port 80 is a privileged port, this program has to be started with root permissions.
 
 #    date = get_date()
-#    connection = connect(date, "Temperatures")
+#    connection = connect(date)
 #    reader = connection.cursor()
 
     serve(app, listen='*:80')
