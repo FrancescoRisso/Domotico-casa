@@ -1,13 +1,13 @@
 # Packages to be installed
 
-    sudo apt install python
+    sudo apt install python3
 
-    sudo apt install python-pip
-    pip install mysql-connector-python
-    pip install requests
+    sudo apt install python3-pip
+    pip3 install mysql-connector-python
+    pip3 install requests
     # Python web server
-    pip install flask
-    pip install waitress
+    pip3 install flask
+    pip3 install waitress
 
 
 # To enable the periodic execution of the script
