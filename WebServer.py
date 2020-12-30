@@ -42,7 +42,7 @@ def hello():
     page = page_add(page, "Camera Valentina", read("Camera_Valentina"))
     page = page_add(page, "Camera Genitori", read("Camera_genitori"))
     page = page_add(page, "Studio", read("Studio"))
-    page = page_add(page, "Salone", read("Salone))
+    page = page_add(page, "Salone", read("Salone"))
     page = page + "\n\t\t\t</tbody>\n\t\t</table>\n\t\t<hr>\n\t\t<p>Per vedere il grafico con gli storici di tutte le temperature <a href =\"https://frisso.grafana.net/d/ri1HUveiz/stanze?orgId=1&refresh=5m&from=now-6h&to=now\">clicca qui</a><hr>"
     page = page + footer
 
