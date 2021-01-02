@@ -101,7 +101,7 @@ while lastexe <= now:
         link = f"{value['baselink']}{lastexe.day:02}{(lastexe.month-1):02}{lastexe.year}.xml"
         value["value"] = get(link, lastexe, config)
 
-    insert(values, writer, lastexe.replace(year = 2000 + year), "CONSUMPTIONS")
+    insert(values, writer, lastexe.replace(year = 2000 + lastexe.year), "CONSUMPTIONS")
 
     lastexe = lastexe + onehour
 
