@@ -8,7 +8,15 @@ from functions.config import config
 def dl_connect():
     configuration = config()
     link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key']
-    conn = requests.get(link)
+
+    try: 
+        # When the session is expired, this link returns an error
+        # To fix it, BTicino requires us to connect to the home page ('/')
+        # and only after that we can connect to the link with the PUB key
+        conn = requests.get(link)
+    except Exception:
+        conn = requests.get(configuration['Datalogger']['ip'])
+        conn = requests.get(link)
 
     key = str(conn.text)
 
