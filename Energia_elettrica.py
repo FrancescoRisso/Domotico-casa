@@ -92,6 +92,21 @@ values = [
         "value": None,
         "baselink": f"{config['Datalogger']['ip']}/grap_0105"
     },
+    {
+        "name": "WallBox",
+        "value": None,
+        "baselink": f"{config['Datalogger']['ip']}/grap_0106"
+    },
+    {
+        "name": "Cooker",
+        "value": None,
+        "baselink": f"{config['Datalogger']['ip']}/grap_0107"
+    },
+    {
+        "name": "Oven",
+        "value": None,
+        "baselink": f"{config['Datalogger']['ip']}/grap_0108"
+    },
 ]
 
 print(f"{get_date()} Inserting consumptions in the database")
