@@ -28,3 +28,10 @@
 # To enable the web server on startup
 
     https://timleland.com/how-to-run-a-linux-program-on-startup/
+
+# Set the timezone
+To avoid timezone problems when storing/reading/showing data, we suggest to store data using the UTC timezone, and set the timezone of mySQL as follows:
+
+    SET GLOBAL time_zone = "+00:00"
+    
+This can be done by entering in mySQL and typing the above command as a normal SQL command.
