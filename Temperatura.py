@@ -90,6 +90,13 @@ temperatures = [
         "value": None
     },
     {
+        "name": "Ritorno_circuito_lato_puffer",
+        "node": "nodo2",
+        "input": 5,
+        "values": [],
+        "value": None
+    },
+    {
         "name": "Mandata_PDC",
         "node": "nodo1",
         "input": 1,
