@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 import requests
 import random
 
-from functions.config import config
+from functions.common.config import config
 
 
 def dl_connect():

@@ -1,11 +1,11 @@
 import time
 
-from functions.connect import connect
-from functions.date import get_date
+from functions.common.connect import connect
+from functions.common.date import get_date
 from functions.temperature.get import temp_getter
 from functions.outputs.get import out_getter
-from functions.insert import insert
-from functions.config import config
+from functions.common.insert import insert
+from functions.common.config import config
 
 print(f"{get_date()} Starting data collection")
 

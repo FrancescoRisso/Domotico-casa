@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
-from functions.config import config
+from functions.common.config import config
 
 config = config()
 

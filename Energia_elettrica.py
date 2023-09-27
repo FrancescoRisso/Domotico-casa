@@ -4,12 +4,12 @@ from requests.auth import HTTPBasicAuth
 import xml.etree.ElementTree as ET
 import os
 
-from functions.date import get_date
-from functions.config import config
-from functions.connect import connect
+from functions.common.date import get_date
+from functions.common.config import config
+from functions.common.connect import connect
 from functions.electricity.get import get
 from functions.electricity.datalogger_connecter import dl_connect
-from functions.insert import insert
+from functions.common.insert import insert
 
 print(f"{get_date()} Starting data collection")
 
@@ -84,7 +84,7 @@ while lastexe <= now:
     lastexe = lastexe + onehour
 
 newLastExe = f"{root[10].text} {root[11].text}"
-writer.execute("UPDATE CONSUMPTIONS_LAST_EXE SET Data = %s WHERE Id = 1", (newLastExe, ))
+writer.execute("UPDATE CONSUMPTIONS_LAST_EXE SET Data = %s WHERE Id = 1", (newLastExe,))
 
 connection.close()
 logout = config["Datalogger"]["ip"] + config["Datalogger"]["logout"]
