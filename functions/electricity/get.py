@@ -4,11 +4,11 @@ import xml.etree.ElementTree as ET
 
 
 def get(link, datetime, config):
-    data = requests.get(link, auth=HTTPBasicAuth('', config['Datalogger']['password'])).text
-    root = ET.fromstring(data.encode('ascii', 'ignore'))
+    data = requests.get(link, auth=HTTPBasicAuth("", config["Datalogger"]["password"])).text
+    root = ET.fromstring(data.encode("ascii", "ignore"))
 
     # Data ahas the following format:
-    #<GRAP>
+    # <GRAP>
     #  <TYPE>1</TYPE>
     #  <RETCODE>0</RETCODE>
     #  <TOTDAT>225</TOTDAT>
@@ -32,15 +32,14 @@ def get(link, datetime, config):
     try:
         date = f"20{datetime.year}-{datetime.month}-{datetime.day}-{datetime.hour}:00:00"
         # Debug
-        #print(f"{source} {link} hour: {datetime.hour:02} date {date}")
+        # print(f"{source} {link} hour: {datetime.hour:02} date {date}")
 
-        orddat = 5 + 9 * datetime.hour;
+        orddat = 5 + 9 * datetime.hour
 
         # Debug
-        #print (f"{link} ORDDAT {orddat-5} value {root[orddat][3].text}")
+        # print (f"{link} ORDDAT {orddat-5} value {root[orddat][3].text}")
 
         return root[orddat][3].text
 
     except Exception as e:
         print(f"Error while getting the data: '{e}'")
-

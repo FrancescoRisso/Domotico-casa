@@ -10,7 +10,6 @@ def dl_connect():
     link = configuration['Datalogger']['ip'] + configuration['Datalogger']['key']
 
     try: 
-        # When the session is expired, this link returns an error
         # To fix it, BTicino requires us to connect to the home page ('/')
         # and only after that we can connect to the link with the PUB key
         conn = requests.get(link)
