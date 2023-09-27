@@ -41,11 +41,8 @@ hour = int(root[11].text[0] + root[11].text[1])
 
 now = datetime.datetime(year, month, day, hour)
 
-last_path = os.path.dirname(os.path.realpath(__file__)) + "/functions/electricity/Day_last_execution.txt"
-
-last_execution = open(last_path, "r")
-last_exe = last_execution.read()
-last_execution.close()
+writer.execute("SELECT Data FROM CONSUMPTIONS_LAST_EXE WHERE Id = 1")
+last_exe = writer.fetchall()[0][0]
 
 day_last_exe = int(last_exe[0] + last_exe[1])
 month_last_exe = int(last_exe[2] + last_exe[3])
@@ -55,7 +52,6 @@ hour_last_exe = int(last_exe[7] + last_exe[8])
 lastexe = datetime.datetime(year_last_exe, month_last_exe, day_last_exe, hour_last_exe)
 
 print(f"{get_date()} Saving data from 20{lastexe.year}-{lastexe.month:02}-{lastexe.day:02} {lastexe.hour:02}:00")
-
 onehour = datetime.timedelta(0, 0, 0, 0, 0, 1)
 
 now = now - onehour
@@ -87,10 +83,8 @@ while lastexe <= now:
 
     lastexe = lastexe + onehour
 
-
-last_execution = open(last_path, "w")
-last_execution.write(f"{root[10].text} {root[11].text}")
-last_execution.close()
+newLastExe = f"{root[10].text} {root[11].text}"
+writer.execute("UPDATE CONSUMPTIONS_LAST_EXE SET Data = %s WHERE Id = 1", (newLastExe, ))
 
 connection.close()
 logout = config["Datalogger"]["ip"] + config["Datalogger"]["logout"]
