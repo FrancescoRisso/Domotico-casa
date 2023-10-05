@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+    name: temperature-loader
+spec:
+    schedule: "*/5 * * * *"
+    jobTemplate:
+        spec:
+            backoffLimit: 3
+            template:
+                spec:
+                    restartPolicy: OnFailure
+                    containers:
+                        - name: temperature-loader
+                          image: francescorisso/domoticocasa-temperatura:latest
+                          resources:
+                              limits:
+                                  memory: "500Mi"
+                                  cpu: "500m"
