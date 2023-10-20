@@ -4,6 +4,7 @@ metadata:
     name: temperature-loader
 spec:
     schedule: "*/5 * * * *"
+    concurrencyPolicy: Replace
     jobTemplate:
         spec:
             backoffLimit: 3
